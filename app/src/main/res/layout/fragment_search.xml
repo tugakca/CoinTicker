@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/progress_bg_color"
+    tools:context=".view.SearchFragment">
+
+    <RelativeLayout
+        android:background="@color/buttonColor"
+        android:layout_width="match_parent"
+        android:layout_height="70dp">
+        <androidx.appcompat.widget.SearchView
+            app:queryHint="bitcoin"
+            android:layout_marginLeft="20dp"
+            android:layout_centerInParent="true"
+            android:id="@+id/searchView"
+            android:background="@color/white"
+            app:iconifiedByDefault="false"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+        </androidx.appcompat.widget.SearchView>
+    </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/coinRv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+        <TextView
+            android:text="Error"
+            android:textColor="@color/buttonColor"
+            android:id="@+id/errorTv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:visibility="gone">
+
+        </TextView>
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/progressBar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/progress_bg_color"
+            android:gravity="center">
+            <ProgressBar
+                android:indeterminateTint="@color/textColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+            </ProgressBar>
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>
+</layout>

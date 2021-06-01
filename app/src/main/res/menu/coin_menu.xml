@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/homepageFragment"
+        android:icon="@drawable/home"
+        android:iconTint="@color/white"
+        android:title="Homepage"></item>
+    <item
+        android:id="@+id/searchFragment"
+        android:icon="@drawable/search"
+        android:iconTint="@color/white"
+        android:title="Search"></item>
+    <item
+        android:id="@+id/favoritesFragment"
+        android:icon="@drawable/not_favorite"
+        android:iconTint="@color/white"
+        android:title="Favorites"></item>
+
+    <item
+
+        android:id="@+id/profileFragment"
+        android:icon="@drawable/user"
+        android:iconTint="@color/white"
+        android:title="Profile"></item>
+</menu>

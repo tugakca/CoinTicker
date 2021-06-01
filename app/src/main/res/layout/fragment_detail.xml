@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.android.cointicker.model.CoinDetail" />
+
+        <variable
+            name="price"
+            type="com.android.cointicker.model.MarketData" />
+    </data>
+
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:id="@+id/pullToRefresh"
+        android:layout_height="match_parent"
+        tools:context=".view.DetailFragment">
+
+        <ScrollView
+            android:id="@+id/scroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/progress_bg_color">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <RelativeLayout
+                    android:id="@+id/relativeLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:background="@color/buttonColor"
+                    app:layout_constraintBottom_toTopOf="@+id/mainLay"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/backIv"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="12dp"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_back" />
+
+                    <TextView
+                        android:id="@+id/mainHeader"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginLeft="100dp"
+                        android:layout_marginRight="12dp"
+                        android:gravity="center"
+                        android:maxLines="2"
+                        android:text="@{model.name}"
+                        android:textColor="@color/white" />
+
+                    <ImageView
+                        android:id="@+id/addToFav"
+                        setFavIcon="@{model.isFavorite}"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="12dp"
+                        android:padding="8dp" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/errorTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="113dp"
+                    android:gravity="center"
+                    android:text="Error"
+                    android:textColor="@color/white"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                </TextView>
+
+                <LinearLayout
+                    android:id="@+id/mainLay"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/currentPrice"
+                        formatPrice="@{price.currentPrice.usd}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="20dp"
+                        android:padding="12dp"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:id="@+id/changeIn24"
+                        currentPercentage="@{price.priceChange24h}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="10dp"
+                        android:padding="12dp"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/hashingAlgo"
+                        setHashingAlgo="@{model.hashingAlgorithm}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="10dp"
+                        android:padding="12dp"
+                        android:textSize="18sp" />
+
+                    <LinearLayout
+                        android:layout_marginTop="12dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:padding="12dp"
+                        android:weightSum="3">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/exchangeTv1"
+                                android:layout_width="50dp"
+                                android:layout_height="wrap_content"
+                                android:gravity="end"
+                                android:text="@{model.symbol}"
+                                android:textSize="9sp" />
+
+                            <EditText
+                                android:id="@+id/exhangeEt1"
+                                android:layout_width="80dp"
+                                android:layout_height="wrap_content"
+                                android:inputType="number"
+                                android:maxLines="1"
+                                android:text="1"
+                                android:textSize="11sp">
+
+                            </EditText>
+                        </LinearLayout>
+
+                        <ImageView
+                            android:id="@+id/exchangeIv"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_weight="1"
+                            android:src="@drawable/turn" />
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/exchangeTv2"
+                                android:layout_width="50dp"
+                                android:layout_height="wrap_content"
+                                android:gravity="end"
+                                android:text="usd"
+                                android:textSize="9sp" />
+
+                            <EditText
+                                android:id="@+id/exchangeEt2"
+                                android:layout_width="80dp"
+                                android:layout_height="wrap_content"
+                                android:clickable="false"
+                                android:inputType="number"
+                                android:maxLines="1"
+                                android:textSize="11sp"
+
+                                >
+
+                            </EditText>
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:padding="12dp"
+                        android:id="@+id/descriptionLay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginTop="30dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/descriptionIv"
+                            setIcon="@{model.image.small}"
+                            android:layout_width="34dp"
+                            android:layout_height="50dp"
+                            android:src="@mipmap/ic_launcher" />
+
+                        <TextView
+                            android:id="@+id/descriptionHeader"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="12dp"
+                            android:text="@{model.name}">
+
+                        </TextView>
+                    </LinearLayout>
+
+
+                    <ProgressBar
+                        android:id="@+id/progressBar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/description"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginTop="12dp"
+                        android:padding="12dp"
+                        setDescription="@{model.description.en}"
+                       ></TextView>
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+</layout>

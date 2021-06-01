@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/progress_bg_color"
+    android:layout_height="match_parent"
+    tools:context=".view.FavoritesFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/coinRv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+        <TextView
+            android:textColor="@color/buttonColor"
+            android:text="Error"
+            android:id="@+id/errorTv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:visibility="gone">
+
+        </TextView>
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/progressBar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/progress_bg_color"
+            android:gravity="center">
+            <ProgressBar
+                android:indeterminateTint="@color/textColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+            </ProgressBar>
+        </LinearLayout>
+    </RelativeLayout>
+</FrameLayout>
+</layout>
